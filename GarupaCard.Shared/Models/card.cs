@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace GarupaCard.Models
+namespace GarupaCard.Shared.Models
 {
 
     public class Entry2
@@ -130,7 +131,23 @@ namespace GarupaCard.Models
         public int characterId { get; set; }
         public string gachaText { get; set; }
         public Training training { get; set; }
+        /// <summary>
+        /// 卡牌资源标志
+        /// </summary>
         public string cardRes { get; set; }
+        [JsonIgnore]
+        public string CardThumbTrained
+        {
+            get
+            {
+                if (this.rarity > 2)
+                    return $"https://bangdream.ga/assets/thumb/chara/card00000_{cardRes}_after_training.png";
+                else
+                {
+                    return $"https://bangdream.ga/assets/thumb/chara/card00000_{cardRes}_normal.png";
+                }
+            }
+        }
         public int maxLevel { get; set; }
         public int maxPerformance { get; set; }
         public int maxTechnique { get; set; }
@@ -138,7 +155,7 @@ namespace GarupaCard.Models
         public int totalMaxParam { get; set; }
         public Skill skill { get; set; }
     }
-    public class Root
+    public class carddata
     {
         public int totalCount { get; set; }
         public IList<Card> data { get; set; }

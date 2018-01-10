@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GarupaCard.Properties
+namespace GarupaCard.WPF.Properties
 {
 
 
